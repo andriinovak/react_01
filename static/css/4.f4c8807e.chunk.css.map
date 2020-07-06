@@ -1,0 +1,1 @@
+{"version":3,"sources":["Messenges.module.css"],"names":[],"mappings":"AAAA,0BACI,YAAa,CACb,6BACJ,CAMA,2DACI,YACJ","file":"4.f4c8807e.chunk.css","sourcesContent":[".dialogs {\r\n    display: grid;\r\n    grid-template-columns: 3fr 7fr;\r\n}\r\n\r\n.dialogs_items {\r\n    padding: 10px;\r\n}\r\n\r\n.messages {\r\n    padding: 10px;\r\n}\r\n"]}
