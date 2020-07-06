@@ -1,0 +1,20 @@
+.nav {
+    grid-area: nav;
+    background: teal;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 26px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: black;
+}
+
+.link:active {
+    color: sienna;
+}

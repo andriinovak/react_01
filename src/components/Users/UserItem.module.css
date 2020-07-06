@@ -1,0 +1,26 @@
+.user {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-template-areas: 
+    "avatarka user_content"
+    "follow user_content";
+}
+
+.avatarka {
+    grid-area: avatarka;
+}
+
+.avatar {
+    width: 80px;
+    border-radius: 15px;
+}
+
+.follow {
+    grid-area: follow;
+}
+
+.user_content {
+    grid-area: user_content;
+}
+

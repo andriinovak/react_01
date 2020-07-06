@@ -1,0 +1,7 @@
+.button_current {
+    font-weight: 900;
+}
+
+.button_not_current {
+    font-weight: lighter;
+}

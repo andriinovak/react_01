@@ -1,0 +1,18 @@
+html {
+  background-color: silver;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-template-rows: 200px 1fr;
+  grid-template-columns: 2fr 8fr;
+  grid-template-areas: 
+  "header header"
+  "nav content_info";
+}
+
+.content_info {
+  grid-area: content_info;
+  background: indianred;
+  padding: 10px;
+}
