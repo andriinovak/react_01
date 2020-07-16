@@ -4,7 +4,7 @@ import cssStyle from './Paginator.module.css'
 
 
 function Paginator(props) {
-    let pagesInPortion = 10;
+    let pagesInPortion = 15;
     let [currentPortionOfPages, setCurrentPortionOfPages] = useState(1);
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let portionCount = Math.ceil(pagesCount / pagesInPortion);

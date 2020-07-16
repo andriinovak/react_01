@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav';
 
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 // import MessengesContainer from './components/Messenges/MessengesContainer';
 // import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -31,6 +31,10 @@ class App extends React.Component {
         <HeaderContainer />
         <Nav />
         <div className='content_info'>
+
+          <Route exact path="/">
+            <Redirect to="/profile" />
+          </Route>
 
           <Route path='/profile/:userId?'>
             <ProfileContainer />

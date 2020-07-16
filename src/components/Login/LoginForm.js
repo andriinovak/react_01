@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Input } from '../../api/FormsControl/FormsControls';
+import { Input, createField } from '../../api/FormsControl/FormsControls';
 import { requiredField, maxLengthCreator } from '../../api/validators/validatorForm';
 import css from '../../api/FormsControl/FormsControls.module.css'
 
@@ -17,6 +17,11 @@ function LoginForm(props) {
                 <Field name="password" component={Input} type="password" placeholder='password' validate={[requiredField, maxLength30]} />
             </div>
             {props.error && <div className={css.summary_error}>{props.error}</div>}
+            {props.captcha
+                && <div>
+                    <img src={props.captcha} alt='captcha' />
+                    {createField('captcha', 'input', 'text', '', [requiredField])}   
+                </div>}
             <div>
                 <label htmlFor="rememberMe">rememberMe</label>
                 <Field name="rememberMe" component="input" type="checkbox" />

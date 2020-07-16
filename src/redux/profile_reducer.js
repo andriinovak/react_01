@@ -1,4 +1,5 @@
 import { ProfileApi } from "../api/api"
+import { stopSubmit } from "redux-form"
 
 
 export const addPostActionCreator = (text) => {
@@ -23,6 +24,12 @@ export const setStatus = (status) => {
     return {
         type: 'SET_STATUS',
         status: status,
+    }
+}
+export const setPhoto = (file) => {
+    return {
+        type: 'SET_PHOTO',
+        file: file,
     }
 }
 
@@ -66,6 +73,14 @@ const profileReducer = (profile = initialState, action) => {
             newProfile.status = action.status;
             return newProfile;
         }
+        case 'SET_PHOTO': {
+            return { ...profile, profile: { ...profile.profile, photos: action.file } }
+        }
+        // case 'SET_PHOTO': {
+        //     let newProfile = Object.assign({}, profile);
+        //     newProfile.profile.photos = action.file;
+        //     return newProfile;
+        // }
         default:
             return profile;
     }
@@ -97,4 +112,23 @@ export const updateStatusThunk = (status) => {
     }
 }
 
+export const addPhotoThunk = (filePhoto) => {
+    return async function (dispatch) {
+        let response = await ProfileApi.addPhotoToProfile(filePhoto);
+        if (response.data.resultCode === 0) {
+            dispatch(setPhoto(response.data.data.photos));
+        }
+    }
+}
+
+export const saveProfileThunk = (dataFromProfileForm) => {
+    return async function (dispatch, getState) {
+        let response = await ProfileApi.saveProfiletoServer(dataFromProfileForm);
+        if (response.data.resultCode === 0) {
+            dispatch(getUserProfileDataThunk(getState().auth.userId));
+        } else {
+            dispatch(stopSubmit('profileInformation', { _error: response.data.messages[0] }));
+        }
+    }
+}
 export default profileReducer;

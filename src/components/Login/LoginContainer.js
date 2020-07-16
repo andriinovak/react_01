@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 class LoginContainer extends React.Component {
 
     onSubmit = (submitData) => {
-        this.props.loginToSiteThunk(submitData.login, submitData.password, submitData.rememberMe);
+        this.props.loginToSiteThunk(submitData.login, submitData.password, submitData.rememberMe, submitData.captcha);
     }
 
 
@@ -16,7 +16,7 @@ class LoginContainer extends React.Component {
         if (this.props.isLogined) return <Redirect to='/profile' />
 
         return (
-            <Login onSubmit={this.onSubmit} />
+            <Login onSubmit={this.onSubmit} captcha={this.props.captcha}/>
         );
     }
 }
@@ -24,6 +24,7 @@ class LoginContainer extends React.Component {
 function mapStateToProps(state) {
     return {
         isLogined: state.auth.isLogined,
+        captcha: state.auth.captchaUrl,
     }
 }
 

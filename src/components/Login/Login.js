@@ -5,7 +5,7 @@ function Login(props) {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={props.onSubmit} />
+            <LoginReduxForm onSubmit={props.onSubmit} captcha={props.captcha} />
         </div>
     );
 }

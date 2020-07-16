@@ -16,7 +16,7 @@ class UsersCl extends React.Component {
             key={item.id}
             followed={item.followed}
             status={item.status}
-            ava={item.photos.small != null ? item.photos.small : './logo192.png'}
+            ava={item.photos.small != null ? item.photos.small : 'https://lh3.googleusercontent.com/XtyURW0mKNnKu_6TzQ5_WpuKF4A7M1oFV6p828eVEWIvTZPtZz2gq5sNM78jpNPMMRmZ'}
             setUnfollowUserThunk={this.props.setUnfollowUserThunk}
             setFollowUserThunk={this.props.setFollowUserThunk}
             followingInProgres={this.props.followingInProgres} />);
@@ -39,6 +39,14 @@ class UsersCl extends React.Component {
                     </div>
                     <div>
                         {this.createUsersList()}
+                    </div>
+                    <div>
+                        <Paginator getDataAboutUsers={this.props.getDataAboutUsersThunk}
+                            setCurrentPage={this.props.setCurrentPage}
+                            currentPage={this.props.currentPage}
+                            pageSize={this.props.pageSize}
+                            totalUsersCount={this.props.totalUsersCount}
+                        />
                     </div>
                 </div>
             </div>

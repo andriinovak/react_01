@@ -37,6 +37,14 @@ export const ProfileApi = {
     updateStatus(status) {
         return axiosInstance.put(`/profile/status`, { status: status });
     },
+    addPhotoToProfile(file) {
+        let formData = new FormData();
+        formData.append('image', file);
+        return axiosInstance.put('profile/photo', formData, { headers: { 'Content-type': 'multipart/form-data' } });
+    },
+    saveProfiletoServer(data) {
+        return axiosInstance.put('/profile', data);
+    }
 }
 
 export const LoginingApi = {
@@ -44,11 +52,14 @@ export const LoginingApi = {
         return axiosInstance.get('/auth/me');
     },
 
-    loginToSite(email, password, rememberMe = false) {
-        return axiosInstance.post('/auth/login', { email, password, rememberMe });
+    loginToSite(email, password, rememberMe = false, captcha = null) {
+        return axiosInstance.post('/auth/login', { email, password, rememberMe, captcha });
     },
 
     logoutFromSite() {
         return axiosInstance.delete('/auth/login');
+    },
+    getCaptchaUrl() {
+        return axiosInstance.get('/security/get-captcha-url');
     },
 }
